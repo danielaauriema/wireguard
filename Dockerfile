@@ -12,6 +12,7 @@
 
 FROM auriema/wireguard:b1
 
+ENV SERVER__BASE_DOMAIN="my-vpn.local"
 ENV SERVER__NETWORK_PREFIX="172.16.21"
 
 ENV WG__NAME="wg_vpn"

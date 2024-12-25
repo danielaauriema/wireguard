@@ -9,12 +9,7 @@
       file: config.yml
   - import_role:
       name: bind9
-    tags: dns_server
-    vars:
-      bind9__server_addr: "{{ server__internal_address }}"
-      bind9__ns_domain: "{{ core__base_domain }}"
-      bind9__subdomains:
-        - { name: "*", addr: "{{ server__internal_address }}" }
+    tags: bind9
   roles:    
   - role: wireguard/config
     tags: wg_config

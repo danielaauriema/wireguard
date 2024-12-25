@@ -1,7 +1,4 @@
 ---
-wg__network_prefix: "172.16.20"
-
-wg__server_intf_name: "{{ wg__name }}"
 wg__server_internal_addr: "{{ wg__network_prefix }}.1"
 
 wg__client_persistent_keepalive: 25

@@ -28,6 +28,6 @@ bash_test_header "wg_test :: ping client_01"
 bash_wait_for "ping -q -c 1 172.16.21.101"
 
 bash_test_header "wg_test :: check DNS server"
-dig +noall +answer @172.16.21.1 devops-core.local | grep 172.16.21.1
+dig +noall +answer @172.16.21.1 "${SERVER__BASE_DOMAIN}" | grep 172.16.21.1
 
 bash_test_header "wg_test :: all tests has finished successfully!!"

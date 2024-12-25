@@ -1,9 +1,4 @@
 ---
-#- name: Install bind
-#  apt:
-#    name: bind9=1:9.18.28-1~deb12u2
-#    update_cache: no
-  
 - name: Copy named.conf.options
   template:
     src: "named.conf.options.j2"
@@ -16,16 +11,12 @@
     dest: "{{ bind9__path }}/named.conf.local"
   notify: bind/restart
 
-- include_tasks: config.yml
+- name: "Copy domain_data_file"
+  template:
+    src: "templates/domain_data_file.j2"
+    dest: "{{ bind9__path }}/db.{{ bind9__ns_domain }}"
+  notify: bind/restart
 
-- debug:
-    var: bind9__ns_domain
+- name: Flush handlers
+  meta: flush_handlers
 
-#- name: "UFW allow Bind9"
-#  ufw:
-#    rule: allow
-#    port: 53
-#    direction: "in"
-#    comment: Bind/DNS
-#    to_ip: "{{ bind9__server_addr }}"
-#  when: core__ufw | default(true)
