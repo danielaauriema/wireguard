@@ -1,7 +1,0 @@
----  
-- include_role: 
-    name: wireguard/config
-  tags: wireguard
-  vars:
-    wg__network_prefix: "{{ server__network_prefix }}"
-    wg__server_internal_addr: "{{ server__internal_address }}"

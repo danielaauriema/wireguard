@@ -16,7 +16,7 @@
       bind9__subdomains:
         - { name: "*", addr: "{{ server__internal_address }}" }
   roles:    
-  - role: certificates
-    tags: certificates
+  - role: wireguard/config
+    tags: wg_config
   - role: wireguard/server
     tags: wg_server
