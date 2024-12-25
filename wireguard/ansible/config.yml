@@ -1,7 +1,10 @@
 ---
 core__name: "devops"
 core__data_path: "/data"
+
 core__storage_path: "{{ core__data_path }}"
+core__config_path: "{{ core__storage_path }}/{{ core__name }}"
+
 core__network_prefix: "172.16.21"
 core__server_internal_addr: "{{ core__network_prefix }}.1"
 core__base_domain: "devops-core.local"
