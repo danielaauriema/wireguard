@@ -1,0 +1,25 @@
+---
+wg__network_prefix: "172.16.20"
+wg__network_name: wg_vpn
+
+wg__server_addr:  "{{ wg__server_host }}"
+wg__server_port: 51820
+wg__server_intf_name: "{{ wg__network_name }}"
+wg__server_internal_addr: "{{ wg__network_prefix }}.1"
+
+wg__client_persistent_keepalive: 25
+wg__client_dns: "{{ wg__server_internal_addr }}, 8.8.8.8, 8.8.4.4"
+wg__client_allowed_ips: "{{ wg__network_prefix }}.0/24"
+
+wg__data_path: "/data/wireguard"
+wg__yaml_path: "{{ wg__data_path }}/{{ wg__network_name }}"
+wg__conf_path: "{{ wg__data_path }}/conf"
+
+wg__server_conf_path: "{{ wg__conf_path }}/servers"
+wg__server_yaml_file: "{{ wg__yaml_path }}/{{ wg__network_name }}.yaml"
+wg__server_conf_file: "{{ wg__server_conf_path }}/{{ wg__network_name }}.conf"
+
+wg__clients:
+  home_pc: 2
+  mobile: 3
+

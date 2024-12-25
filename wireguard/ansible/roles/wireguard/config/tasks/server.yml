@@ -1,0 +1,29 @@
+---
+- name: Create server private key
+  shell: wg genkey
+  register: wg__server_pvt_result
+  args:
+    creates: "{{ wg__server_yaml_file }}"
+
+- name: Create server public key
+  shell: "echo {{ wg__server_pvt_result.stdout }} | wg pubkey"
+  register: wg__server_pub_result
+  args:
+    creates: "{{ wg__server_yaml_file }}"
+
+- name: Write server yaml file
+  template:
+    src: templates/server_yaml.j2
+    dest: "{{ wg__server_yaml_file }}"
+  when: wg__server_pub_result.changed
+
+- name: Include server vars from config file
+  include_vars:
+    file: "{{ wg__server_yaml_file }}"
+    name: wg__server_keys
+
+- name: Write server config file
+  template:
+    src: templates/server_intf.j2
+    dest: "{{ wg__server_conf_file }}"
+  changed_when: false

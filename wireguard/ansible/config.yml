@@ -1,0 +1,23 @@
+---
+core__name: "devops"
+core__data_path: "/data"
+core__storage_path: "{{ core__data_path }}"
+core__network_prefix: "172.16.21"
+core__server_internal_addr: "{{ core__network_prefix }}.1"
+core__base_domain: "devops-core.local"
+core__docker_network: "core-docker-network"
+
+
+# VPN config
+#wg__network_name: "${WG__VPN_NAME}"
+#wg__server_host: "${WG__SERVER_ADDR}"
+#wg__server_port: "${WG__SERVER_PORT}"
+
+wg__network_name: "wg_core"
+wg__server_host: "wg_server"
+wg__server_port: "51820"
+
+wg__data_path: "{{ core__data_path }}/wireguard"
+wg__clients:
+  client_01: "101"
+  client_02: "102"

@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+if [ $# -gt 0 ]; then
+    eval "$@"
+else
+    cd /opt/wireguard/ansible
+    ansible-playbook wireguard.yml
+    wg-quick up wg_core
+    tail -f /dev/null
+fi

@@ -1,0 +1,25 @@
+---
+- name: Generate DevOps Core Tools Certificates
+  hosts: localhost
+  become: true
+  gather_facts: no
+  pre_tasks:
+  - name: load variables from config.yaml
+    include_vars:
+      file: config.yml
+  - import_role:
+      name: init
+    tags: init
+  - import_role:
+      name: bind9
+    tags: dns_server
+    vars:
+      bind9__server_addr: "{{ core__server_internal_addr }}"
+      bind9__ns_domain: "{{ core__base_domain }}"
+      bind9__subdomains:
+        - { name: "*", addr: "{{ core__server_internal_addr }}" }
+  roles:    
+  - role: certificates
+    tags: certificates
+  - role: server
+    tags: server

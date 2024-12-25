@@ -1,0 +1,13 @@
+---  
+- include_role: 
+    name: wireguard/config
+  tags: wireguard
+  vars:
+    wg__network_prefix: "{{ core__network_prefix }}"
+    wg__server_internal_addr: "{{ core__server_internal_addr }}"
+    wg__server_addr: "{{ wg__server_host }}"
+
+#    wg__network_name: "${WG__VPN_NAME}"
+#    wg__server_host: "${WG__SERVER_ADDR}"
+#    wg__server_addr: "${WG__SERVER_ADDR}"
+#    wg__server_port: "${WG__SERVER_PORT}"

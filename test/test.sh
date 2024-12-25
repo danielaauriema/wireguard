@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+if [ ! -f "./bash-test.sh" ]; then
+  curl -s "https://raw.githubusercontent.com/danielaauriema/bash-tools/master/lib/bash-test.sh" > "/opt/test/bash-test.sh"
+fi
+if [ ! -f "./bash-wait.sh" ]; then
+  curl -s "https://raw.githubusercontent.com/danielaauriema/bash-tools/master/lib/bash-wait.sh" > "/opt/test/bash-wait.sh"
+fi
+
+. /opt/test/bash-wait.sh
+. /opt/test/bash-test.sh
+
+bash_test_header "wg_client :: wait for config file"
+bash_wait_for "stat -c %n /data/wireguard/conf/client_02/wg_core.conf > /dev/null" 60
+cp "/data/wireguard/conf/client_02/wg_core.conf" "/etc/wireguard/wg_core.conf"
+
+bash_test_header "wg_test :: wait for connection"
+bash_wait_for "wg-quick up wg_core"
+
+bash_test_header "wg_test :: ping itself"
+bash_wait_for "ping -q -c 1 172.16.21.102"
+
+bash_test_header "wg_test :: ping server"
+bash_wait_for "ping -q -c 1 172.16.21.1" 60
+
+bash_test_header "wg_test :: ping client_01"
+bash_wait_for "ping -q -c 1 172.16.21.101"
+
+bash_test_header "wg_test :: check DNS server"
+dig +noall +answer @172.16.21.1 devops-core.local | grep 172.16.21.1
+
+bash_test_header "wg_test :: all tests has finished successfully!!"
