@@ -1,8 +1,6 @@
 ---
-wg__server_internal_addr: "{{ wg__network_prefix }}.1"
-
 wg__client_persistent_keepalive: 25
-wg__client_dns: "{{ wg__server_internal_addr }}, 8.8.8.8, 8.8.4.4"
+wg__client_dns: "{{ wg__server_internal_address }}, 8.8.8.8, 8.8.4.4"
 wg__client_allowed_ips: "{{ wg__network_prefix }}.0/24"
 
 wg__data_path: "/data/wireguard"

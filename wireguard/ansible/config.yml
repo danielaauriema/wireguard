@@ -24,7 +24,7 @@ wg__server_port: "{{ lookup('env', 'WG__SERVER_PORT') }}"
 
 
 wg__network_prefix: "{{ server__network_prefix }}"
-wg__server_internal_addr: "{{ server__internal_address }}"
+wg__server_internal_address: "{{ server__internal_address }}"
 wg__data_path: "{{ core__data_path }}/wireguard"
 wg__clients:
   client_01: "101"
