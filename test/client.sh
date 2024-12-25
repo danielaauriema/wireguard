@@ -12,7 +12,7 @@ fi
 . /opt/test/bash-test.sh
 
 bash_test_header "wg_client :: wait for config file"
-bash_wait_for "stat -c %n /data/wireguard/conf/client_01/${WG__NAME}.conf > /dev/null" 60
+bash_wait_for "[ -f /data/wireguard/conf/client_01/${WG__NAME}.conf ]" 60
 cp "/data/wireguard/conf/client_01/${WG__NAME}.conf" "/etc/wireguard/${WG__NAME}.conf"
 
 bash_test_header "wg_client :: wait for connection"

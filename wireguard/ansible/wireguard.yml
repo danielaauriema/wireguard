@@ -11,12 +11,12 @@
       name: bind9
     tags: dns_server
     vars:
-      bind9__server_addr: "{{ core__server_internal_addr }}"
+      bind9__server_addr: "{{ server__internal_address }}"
       bind9__ns_domain: "{{ core__base_domain }}"
       bind9__subdomains:
-        - { name: "*", addr: "{{ core__server_internal_addr }}" }
+        - { name: "*", addr: "{{ server__internal_address }}" }
   roles:    
   - role: certificates
     tags: certificates
-  - role: server
-    tags: server
+  - role: wireguard/server
+    tags: wg_server

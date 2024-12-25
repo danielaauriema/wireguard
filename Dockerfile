@@ -12,6 +12,8 @@
 
 FROM auriema/wireguard:b1
 
+ENV SERVER__NETWORK_PREFIX="172.16.21"
+
 ENV WG__NAME="wg_vpn"
 ENV WG__SERVER_ADDRESS="wg_server"
 ENV WG__SERVER_PORT="51820"
