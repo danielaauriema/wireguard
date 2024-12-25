@@ -9,5 +9,5 @@ DNS = {{ wg__client_dns }}
 PublicKey = {{ wg__server_keys.server_pub_key }}
 PresharedKey = {{ wg__client_keys.client_psk }}
 AllowedIPs = {{ wg__client_allowed_ips }}
-Endpoint = {{ wg__server_addr }}:{{ wg__server_port }}
+Endpoint = {{ wg__server_address }}:{{ wg__server_port }}
 PersistentKeepalive = {{ wg__client_persistent_keepalive }}

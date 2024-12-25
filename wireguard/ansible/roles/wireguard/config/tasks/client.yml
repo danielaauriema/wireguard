@@ -17,7 +17,7 @@
 - name: Set client files and data
   set_fact:
     wg__client_yaml_file: "{{ wg__yaml_path }}/{{ wg__client.name }}.yaml"
-    wg__client_conf_file: "{{ wg__client_conf_path }}/{{ wg__network_name }}.conf"
+    wg__client_conf_file: "{{ wg__client_conf_path }}/{{ wg__name }}.conf"
     wg__client_addr: "{{ wg__network_prefix }}.{{ wg__client.id }}"
     wg__client_peer_file: "{{ wg__conf_path }}/~peer.conf"
 

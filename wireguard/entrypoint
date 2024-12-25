@@ -6,6 +6,6 @@ if [ $# -gt 0 ]; then
 else
     cd /opt/wireguard/ansible
     ansible-playbook wireguard.yml
-    wg-quick up wg_core
+    wg-quick up "${WG__NAME}"
     tail -f /dev/null
 fi

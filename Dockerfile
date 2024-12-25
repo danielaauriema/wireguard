@@ -12,18 +12,13 @@
 
 FROM auriema/wireguard:b1
 
-ENV WG__VPN_NAME="wg_vpn"
-ENV WG__SERVER_ADDR="wg_server"
+ENV WG__NAME="wg_vpn"
+ENV WG__SERVER_ADDRESS="wg_server"
 ENV WG__SERVER_PORT="51820"
-
-## Set Gitea variables
-#ENV GITEA__security__INSTALL_LOCK="true"
-#ENV GITEA__service__DISABLE_REGISTRATION="true"
 
 ADD wireguard /opt/wireguard
 RUN chmod -R +rx /opt/wireguard
 #WORKDIR /opt/startup
-#
 
 EXPOSE 53/udp
 EXPOSE 51820/udp
