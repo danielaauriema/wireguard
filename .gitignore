@@ -1,4 +1,3 @@
 .idea
 data/**
-test/bash-test.sh
-test/bash-wait.sh
+test/bash-*.sh

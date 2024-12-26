@@ -1,0 +1,10 @@
+---
+# bind9 custom config
+bind9__subdomains:
+  - { name: "custom", address: "{{ server__network_prefix }}.99" }
+  - { name: "*", address: "{{ server__internal_address }}" }
+
+# WireGuard config
+wg__clients:
+  client_01: "101"
+  client_02: "102"

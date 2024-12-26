@@ -28,7 +28,7 @@ options {
         //========================================================================
         dnssec-validation auto;
 
-        listen-on { {{ bind9__server_addr }}; };
+        listen-on { {{ bind9__server_address }}; };
 
         listen-on-v6 { none; };
         //listen-on-v6 { any; };

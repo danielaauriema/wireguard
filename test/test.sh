@@ -30,4 +30,10 @@ bash_wait_for "ping -q -c 1 172.16.21.101"
 bash_test_header "wg_test :: check DNS server"
 dig +noall +answer @172.16.21.1 "${SERVER__BASE_DOMAIN}" | grep 172.16.21.1
 
+bash_test_header "wg_test :: check subdomain"
+dig +noall +answer @172.16.21.1 "any.${SERVER__BASE_DOMAIN}" | grep 172.16.21.1
+
+bash_test_header "wg_test :: check custom subdomain"
+dig +noall +answer @172.16.21.1 "custom.${SERVER__BASE_DOMAIN}" | grep "${SERVER__NETWORK_PREFIX}.99"
+
 bash_test_header "wg_test :: all tests has finished successfully!!"

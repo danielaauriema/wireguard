@@ -8,6 +8,7 @@
     server__base_domain: "{{ lookup('env', 'SERVER__BASE_DOMAIN') }}"
     server__network_prefix: "{{ lookup('env', 'SERVER__NETWORK_PREFIX') }}"
     server__internal_address: "{{ server__network_prefix }}.1"
+
     # WireGuard config
     wg__name: "{{ lookup('env', 'WG__NAME') }}"
     wg__server_address: "{{ lookup('env', 'WG__SERVER_ADDRESS') }}"
@@ -16,7 +17,7 @@
   pre_tasks:
   - name: load variables from config.yaml
     include_vars:
-      file: config.yml
+      file: "{{ lookup('env', 'SERVER__CONFIG_FILE') }}"
   roles:
   - role: bind9
     tags: bind9

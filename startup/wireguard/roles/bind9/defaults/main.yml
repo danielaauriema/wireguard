@@ -1,0 +1,6 @@
+---
+bind9__path: "/etc/bind"
+bind9__server_address: "{{ server__internal_address }}"
+bind9__ns_domain: "{{ server__base_domain }}"
+bind9__subdomains:
+  - { name: "*", address: "{{ server__internal_address }}" }

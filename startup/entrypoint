@@ -4,8 +4,7 @@ set -e
 if [ $# -gt 0 ]; then
     eval "$@"
 else
-    cd /opt/wireguard/ansible
-    ansible-playbook wireguard.yml
+    ansible-playbook /opt/wireguard/wireguard.yml
     wg-quick up "${WG__NAME}"
     tail -f /dev/null
 fi

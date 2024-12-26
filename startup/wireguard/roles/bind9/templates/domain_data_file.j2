@@ -10,9 +10,9 @@ $TTL            604800
                          604800 )       ; Negative Cache TTL
 
 @               IN      NS      ns.{{ bind9__ns_domain }}.
-@               IN      A       {{ bind9__server_addr }}
+@               IN      A       {{ bind9__server_address }}
 @               IN      AAAA    ::1
-ns              IN      A       {{ bind9__server_addr }}
+ns              IN      A       {{ bind9__server_address }}
 {% for subdomain in bind9__subdomains %}
-{{ subdomain.name.ljust(15) }} IN      A       {{ subdomain.addr }}
+{{ subdomain.name.ljust(15) }} IN      A       {{ subdomain.address }}
 {% endfor %}
