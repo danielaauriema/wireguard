@@ -36,9 +36,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Run Bash Tests
+      # Build Test Image
       - name: Run Tests
-        run: make build ci-test --no-print-directory
+        run: make build
+        shell: bash
+
+      # Run Tests
+      - name: Run Tests
+        run: make ci-test --no-print-directory
         shell: bash
 
       # Install the cosign tool except on PR
