@@ -1,14 +1,4 @@
 ---
-wg__client_persistent_keepalive: 25
-wg__client_dns: "{{ wg__server_internal_address }}, 8.8.8.8, 8.8.4.4"
-wg__client_allowed_ips: "{{ wg__network_prefix }}.0/24"
 
-wg__data_path: "/data/wireguard"
-wg__yaml_path: "{{ wg__data_path }}/{{ wg__name }}"
-wg__conf_path: "{{ wg__data_path }}/conf"
-
-wg__server_conf_path: "{{ wg__conf_path }}/servers"
-wg__server_yaml_file: "{{ wg__yaml_path }}/{{ wg__name }}.yaml"
-wg__server_conf_file: "{{ wg__server_conf_path }}/{{ wg__name }}.conf"
 
 
