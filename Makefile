@@ -80,6 +80,7 @@ run:
 up:
 	@echo "*** Starting all services..."
 	@docker network create --driver=bridge $(NETWORK_NAME)
+	@chmod -R +x ./startup ./test
 
 down:
 	@echo "*** Stopping all services..."

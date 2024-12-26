@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v4
 
       # Build Test Image
-      - name: Run Tests
+      - name: Build Test Image
         run: make build
         shell: bash
 
