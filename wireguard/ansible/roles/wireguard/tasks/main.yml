@@ -12,3 +12,9 @@
 
 - include_tasks : client.yml  
   loop: "{{ wg__clients | dict2items }}"
+
+- name: Copy server config file
+  copy:
+    src: "{{ wg__server_conf_file }}"
+    dest: "/etc/wireguard"
+  register: wg__copy_reg

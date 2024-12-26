@@ -13,20 +13,6 @@
     wg__server_address: "{{ lookup('env', 'WG__SERVER_ADDRESS') }}"
     wg__server_port: "{{ lookup('env', 'WG__SERVER_PORT') }}"
 
-    wg__client_persistent_keepalive: 25
-    wg__network_prefix: "{{ server__network_prefix }}"
-    wg__server_internal_address: "{{ server__internal_address }}"
-    wg__client_dns: "{{ wg__server_internal_address }}, 8.8.8.8, 8.8.4.4"
-    wg__client_allowed_ips: "{{ wg__network_prefix }}.0/24"
-
-    wg__data_path: "{{ server__data_path }}/wireguard"
-    wg__yaml_path: "{{ wg__data_path }}/{{ wg__name }}"
-    wg__conf_path: "{{ wg__data_path }}/conf"
-
-    wg__server_conf_path: "{{ wg__conf_path }}/servers"
-    wg__server_yaml_file: "{{ wg__yaml_path }}/{{ wg__name }}.yaml"
-    wg__server_conf_file: "{{ wg__server_conf_path }}/{{ wg__name }}.conf"
-
   pre_tasks:
   - name: load variables from config.yaml
     include_vars:
@@ -34,7 +20,5 @@
   roles:
   - role: bind9
     tags: bind9
-  - role: wireguard/config
-    tags: wg_config
-  - role: wireguard/server
-    tags: wg_server
+  - role: wireguard
+    tags: wireguard

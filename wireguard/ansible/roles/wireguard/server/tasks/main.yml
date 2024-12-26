@@ -1,6 +1,0 @@
----
-- name: Copy config file
-  copy:
-    src: "{{ wg__server_conf_file }}"
-    dest: "/etc/wireguard"
-  register: wg__copy_reg   
